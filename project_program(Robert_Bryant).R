@@ -1,5 +1,8 @@
 #FINAL PROJECT
 #Robert Bryant
+#
+#Repository available at:
+#https://github.com/bryanrob/Math_3526_Final_Project
 
 #CLEAR MEMORY
 rm(list=ls())
