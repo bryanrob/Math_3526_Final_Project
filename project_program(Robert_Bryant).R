@@ -50,7 +50,7 @@ callAPI<-function(ticker,outputSize,key){
 #Read file containing the API key.  The API will refuse service without providing a key.
 if (!file.exists("keyFile.txt")){
   cat("KEY FILE NOT FOUND!!!\nPlease save your Alpha Vantage API key in 'keyfile.txt'\nYou can obtain an API key from: (https://www.alphavantage.co/support/#api-key).\n")
-  dir.create("keyFile.txt")
+  file.create("keyFile.txt")
 } 
 key<-readFirstLine("keyFile.txt")
 if(key==""){
@@ -58,9 +58,12 @@ if(key==""){
 }
 
 #Specify the ticker symbols of the stock data we want to obtain.
+#Change the line below to include whatever companies that you want.
 tickers<-c("AMZN","GOOGL","AAPL","MSFT","TSLA","NTDOY","SONY","RBLX")
-#"compact" for only past 100 days.
-#"full" for the past 20 years.
+
+#Set "outputSize" for either of the following:
+# - "compact" for only past 100 days.
+# - "full" for the past 20 years.
 outputSize="full" 
 
 #Declare the existence of {data}.  Information from the API will be put into {data}.
@@ -359,7 +362,9 @@ for(i in seq(1:nrow(predictions))){
   ))
 }
 
-#print(predictions)
+#Next goal: Use a different prediction algorithm to (hopefully)
+#get better results, as well as configure the program to get
+#stock intraday data.
 
 #__CLEANUP__
 rm(list=ls())
