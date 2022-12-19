@@ -75,9 +75,9 @@ data<-list()
 today<-Sys.Date()
 dateFileDir<-"./stock_data/_lastCallDate.txt"
 if (!file.exists(dateFileDir)){
+  dir.create("./stock_data")
   file.create(dateFileDir)
   writeFirstLine(dateFileDir,format(today+1,"%Y-%m-%d"))
-  rm(dateFile)
 } 
 dateFromFile<-as.Date(readFirstLine(dateFileDir),"%Y-%m-%d")
 if(dateFromFile!=today){
